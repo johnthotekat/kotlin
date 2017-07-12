@@ -16,13 +16,21 @@
 
 package test.numbers
 
-import kotlin.Math
+//import kotlin.Math
 
 import org.junit.Test
+import java.lang.Math.*
+import kotlin.math.PI
+import kotlin.math.sin
+import kotlin.math.cos
+import kotlin.math.pow
+import kotlin.math.atan2
+import kotlin.math.sqrt
+import kotlin.math.E
 
 fun computeDistanceInMiles(lat1: Double, lng1: Double, lat2: Double, lng2: Double): Double {
     val earthRadius = 3958.75
-    val rads = lat1 / Math.PI
+    val rads = toRadians(lat1)
     val dLat = lat2 - lat1
     val dLng = lng2 - lng1
     val sindLat = Math.sin(dLat / 2)
@@ -32,6 +40,25 @@ fun computeDistanceInMiles(lat1: Double, lng1: Double, lat2: Double, lng2: Doubl
     val dist = earthRadius * c
 
     return dist
+}
+
+fun computeDistanceInMilesCommonMath(lat1: Double, lng1: Double, lat2: Double, lng2: Double): Double {
+    val earthRadius = 3958.75
+    val rads = lat1 / PI
+    val dLat = lat2 - lat1
+    val dLng = lng2 - lng1
+    val sindLat = sin(dLat / 2) // sin(dLat / 2)
+    val sindLng = sin(dLng / 2)
+    val a = pow(sindLat, 2.0) + pow(sindLng, 2.0) * cos(lat1) * cos(lat2)
+    val c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    val dist = earthRadius * c
+
+    return dist
+}
+
+fun <E: Number> List<E>.sum() {
+    val result = this.sumByDouble { it.toDouble() } * E
+
 }
 
 class MathExample {
