@@ -16,31 +16,11 @@
 
 package test.numbers
 
-//import kotlin.Math
 
 import org.junit.Test
-import java.lang.Math.*
-import kotlin.math.PI
-import kotlin.math.sin
-import kotlin.math.cos
-import kotlin.math.pow
-import kotlin.math.atan2
-import kotlin.math.sqrt
-import kotlin.math.E
+import kotlin.math.*
 
-fun computeDistanceInMiles(lat1: Double, lng1: Double, lat2: Double, lng2: Double): Double {
-    val earthRadius = 3958.75
-    val rads = toRadians(lat1)
-    val dLat = lat2 - lat1
-    val dLng = lng2 - lng1
-    val sindLat = Math.sin(dLat / 2)
-    val sindLng = Math.sin(dLng / 2)
-    val a = Math.pow(sindLat, 2.0) + Math.pow(sindLng, 2.0) * Math.cos(lat1) * Math.cos(lat2)
-    val c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-    val dist = earthRadius * c
-
-    return dist
-}
+fun toRadians(degrees: Double) = PI * degrees / 180
 
 fun computeDistanceInMilesCommonMath(lat1: Double, lng1: Double, lat2: Double, lng2: Double): Double {
     val earthRadius = 3958.75
@@ -57,14 +37,22 @@ fun computeDistanceInMilesCommonMath(lat1: Double, lng1: Double, lat2: Double, l
 }
 
 fun <E: Number> List<E>.sum() {
-    val result = this.sumByDouble { it.toDouble() } * E
+    val r0 = pow(E, this.sumByDouble { it.toDouble() })
+    val r2 = E.pow(this.sumByDouble { it.toDouble() })
+    val e2 = E.pow(2)
+//    val r1 = r0.adjustExponent(+2)
 
 }
+
 
 class MathExample {
     @Test
     fun run() {
-        println(computeDistanceInMiles(59.9391987, 30.3215199, 48.1380815, 11.5770459))
+        //println(computeDistanceInMiles(59.9391987, 30.3215199, 48.1380815, 11.5770459))
 
+        val f: Double = PI
+        println(f.ulp)
+        println("${f.nextUp()} ${f + f.ulp}")
+        println("${f.nextDown()} ${f - f.ulp}")
     }
 }
