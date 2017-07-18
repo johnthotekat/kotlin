@@ -19,6 +19,7 @@
 package org.jetbrains.kotlin.js.translate.expression
 
 import org.jetbrains.kotlin.builtins.KotlinBuiltIns
+import org.jetbrains.kotlin.descriptors.CallableDescriptor
 import org.jetbrains.kotlin.descriptors.FunctionDescriptor
 import org.jetbrains.kotlin.js.backend.ast.*
 import org.jetbrains.kotlin.js.translate.callTranslator.CallTranslator
@@ -115,7 +116,10 @@ fun translateForExpression(expression: KtForExpression, context: TranslationCont
 
             val currentVarInit =
                 if (destructuringParameter == null) {
-                    newVar(parameterName, itemValue).apply { source = expression.loopRange }
+                    val loopParameterDescriptor = (getDescriptorForElement(context.bindingContext(), loopParameter) as CallableDescriptor)
+                    val loopParameterType = loopParameterDescriptor.returnType ?: context.currentModule.builtIns.anyType
+                    val coercedItemValue = itemValue?.let { TranslationUtils.coerce(context, it, loopParameterType) }
+                    newVar(parameterName, coercedItemValue).apply { source = expression.loopRange }
                 }
                 else {
                     val innerBlockContext = context.innerBlock(block)
