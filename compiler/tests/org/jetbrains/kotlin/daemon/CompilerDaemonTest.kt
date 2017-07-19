@@ -88,7 +88,7 @@ class CompilerDaemonTest : KotlinIntegrationTestBase() {
                                       verbose = true,
                                       reportPerf = true)
 
-    fun makeTestDaemonJvmOptions(logFile: File? = null, xmx: Int = 256): DaemonJVMOptions {
+    fun makeTestDaemonJvmOptions(logFile: File? = null, xmx: Int = 384): DaemonJVMOptions {
         val additionalArgs = arrayListOf<String>()
         if (logFile != null) {
             additionalArgs.add("D$COMPILE_DAEMON_LOG_PATH_PROPERTY=\"${logFile.loggerCompatiblePath}\"")
@@ -97,7 +97,7 @@ class CompilerDaemonTest : KotlinIntegrationTestBase() {
         return configureDaemonJVMOptions(
                 baseOpts,
                 *additionalArgs.toTypedArray(),
-                inheritMemoryLimits = xmx > 0,
+                inheritMemoryLimits = xmx <= 0,
                 inheritAdditionalProperties = false,
                 inheritOtherJvmOptions = false)
     }
