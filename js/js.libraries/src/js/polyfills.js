@@ -31,6 +31,28 @@ if (typeof String.prototype.endsWith === "undefined") {
         return lastIndex !== -1 && lastIndex === position;
     };
 }
+// ES6 Math polyfills
+if (typeof Math.sign === "undefined") {
+    Math.sign = function(x) {
+        x = +x; // convert to a number
+        if (x === 0 || isNaN(x)) {
+            return Number(x);
+        }
+        return x > 0 ? 1 : -1;
+    };
+}
+if (typeof Math.trunc === "undefined") {
+    Math.trunc = function(x) {
+        if (isNaN(x)) {
+            return NaN;
+        }
+        if (x > 0) {
+            return Math.floor(x);
+        }
+        return Math.ceil(x);
+    };
+}
+// TODO: expm1, log1p
 // For HtmlUnit and PhantomJs
 if (typeof ArrayBuffer.isView === "undefined") {
     ArrayBuffer.isView = function(a) {
