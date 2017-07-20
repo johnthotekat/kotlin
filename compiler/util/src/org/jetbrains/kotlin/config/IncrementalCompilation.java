@@ -23,11 +23,11 @@ public class IncrementalCompilation {
     private static final String IS_EXPERIMENTAL_PROPERTY = "kotlin.incremental.compilation.experimental";
 
     public static boolean isExperimental() {
-        return isEnabled() && "true".equals(System.getProperty(IS_EXPERIMENTAL_PROPERTY));
+        return true;
     }
 
     public static boolean isEnabled() {
-        return !"false".equals(System.getProperty(INCREMENTAL_COMPILATION_PROPERTY));
+        return true;
     }
 
     @TestOnly
