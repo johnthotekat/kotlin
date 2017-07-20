@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2015 JetBrains s.r.o.
+ * Copyright 2010-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,17 +23,17 @@ import com.intellij.psi.stubs.StubIndex
 import com.intellij.psi.stubs.StubIndexKey
 import org.jetbrains.kotlin.psi.KtFile
 
-class KotlinFileFacadeFqNameIndex private constructor() : StringStubIndexExtension<KtFile>() {
+class KotlinScriptFqNameIndex private constructor() : StringStubIndexExtension<KtFile>() {
     override fun getKey(): StubIndexKey<String, KtFile> = KEY
 
-    override fun get(key: String, project: Project, scope: GlobalSearchScope) =
+    override fun get(key: String, project: Project, scope: GlobalSearchScope): Collection<KtFile> =
             StubIndex.getElements(KEY, key, project, scope, KtFile::class.java)
 
     companion object {
-        private val KEY = KotlinIndexUtil.createIndexKey(KotlinFileFacadeFqNameIndex::class.java)
+        private val KEY = KotlinIndexUtil.createIndexKey(KotlinScriptFqNameIndex::class.java)
 
-        @JvmField val INSTANCE: KotlinFileFacadeFqNameIndex = KotlinFileFacadeFqNameIndex()
+        @JvmField val INSTANCE: KotlinScriptFqNameIndex = KotlinScriptFqNameIndex()
 
-        @JvmStatic fun getInstance(): KotlinFileFacadeFqNameIndex = INSTANCE
+        @JvmStatic fun getInstance(): KotlinScriptFqNameIndex = INSTANCE
     }
 }
