@@ -44,15 +44,3 @@ fun <E: Number> List<E>.sum() {
 
 }
 
-
-class MathExample {
-    @Test
-    fun run() {
-        //println(computeDistanceInMiles(59.9391987, 30.3215199, 48.1380815, 11.5770459))
-
-        val f: Double = PI
-        println(f.ulp)
-        println("${f.nextUp()} ${f + f.ulp}")
-        println("${f.nextDown()} ${f - f.ulp}")
-    }
-}

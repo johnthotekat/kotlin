@@ -52,6 +52,58 @@ if (typeof Math.trunc === "undefined") {
         return Math.ceil(x);
     };
 }
+if (typeof Math.sinh === "undefined") {
+    Math.sinh = function(x) {
+        var y = Math.exp(x);
+        return (y - 1 / y) / 2;
+    };
+}
+if (typeof Math.cosh === "undefined") {
+    Math.cosh = function(x) {
+        var y = Math.exp(x);
+        return (y + 1 / y) / 2;
+    };
+}
+if (typeof Math.tanh === "undefined") {
+    Math.tanh = function(x){
+        var a = Math.exp(+x), b = Math.exp(-x);
+        return a == Infinity ? 1 : b == Infinity ? -1 : (a - b) / (a + b);
+    };
+}
+if (typeof Math.hypot === "undefined") {
+    Math.hypot = function() {
+        var y = 0;
+        var length = arguments.length;
+
+        for (var i = 0; i < length; i++) {
+            if (arguments[i] === Infinity || arguments[i] === -Infinity) {
+                return Infinity;
+            }
+            y += arguments[i] * arguments[i];
+        }
+        return Math.sqrt(y);
+    };
+}
+if (typeof Math.log10 === "undefined") {
+    Math.log10 = function(x) {
+        return Math.log(x) * Math.LOG10E;
+    };
+}
+if (typeof Math.log2 === "undefined") {
+    Math.log2 = function(x) {
+        return Math.log(x) * Math.LOG2E;
+    };
+}
+if (typeof Math.log1p === "undefined") {
+    Math.log1p = function(x) {
+        return Math.log(x + 1);
+    };
+}
+if (typeof Math.expm1 === "undefined") {
+    Math.expm1 = function(x) {
+        return Math.exp(x) - 1;
+    };
+}
 // TODO: expm1, log1p
 // For HtmlUnit and PhantomJs
 if (typeof ArrayBuffer.isView === "undefined") {
