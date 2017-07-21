@@ -807,6 +807,7 @@ public fun CharSequence.withIndex(): Iterable<IndexedValue<Char>> {
  * Returns `true` if all characters match the given [predicate].
  */
 public inline fun CharSequence.all(predicate: (Char) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (!predicate(element)) return false
     return true
 }
@@ -815,14 +816,14 @@ public inline fun CharSequence.all(predicate: (Char) -> Boolean): Boolean {
  * Returns `true` if char sequence has at least one character.
  */
 public fun CharSequence.any(): Boolean {
-    for (element in this) return true
-    return false
+    return !isEmpty()
 }
 
 /**
  * Returns `true` if at least one character matches the given [predicate].
  */
 public inline fun CharSequence.any(predicate: (Char) -> Boolean): Boolean {
+    if (isEmpty()) return false
     for (element in this) if (predicate(element)) return true
     return false
 }
@@ -1003,14 +1004,14 @@ public fun CharSequence.minWith(comparator: Comparator<in Char>): Char? {
  * Returns `true` if the char sequence has no characters.
  */
 public fun CharSequence.none(): Boolean {
-    for (element in this) return false
-    return true
+    return isEmpty()
 }
 
 /**
  * Returns `true` if no characters match the given [predicate].
  */
 public inline fun CharSequence.none(predicate: (Char) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (predicate(element)) return false
     return true
 }

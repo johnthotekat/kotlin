@@ -8808,6 +8808,7 @@ public infix fun CharArray.union(other: Iterable<Char>): Set<Char> {
  * Returns `true` if all elements match the given [predicate].
  */
 public inline fun <T> Array<out T>.all(predicate: (T) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (!predicate(element)) return false
     return true
 }
@@ -8816,6 +8817,7 @@ public inline fun <T> Array<out T>.all(predicate: (T) -> Boolean): Boolean {
  * Returns `true` if all elements match the given [predicate].
  */
 public inline fun ByteArray.all(predicate: (Byte) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (!predicate(element)) return false
     return true
 }
@@ -8824,6 +8826,7 @@ public inline fun ByteArray.all(predicate: (Byte) -> Boolean): Boolean {
  * Returns `true` if all elements match the given [predicate].
  */
 public inline fun ShortArray.all(predicate: (Short) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (!predicate(element)) return false
     return true
 }
@@ -8832,6 +8835,7 @@ public inline fun ShortArray.all(predicate: (Short) -> Boolean): Boolean {
  * Returns `true` if all elements match the given [predicate].
  */
 public inline fun IntArray.all(predicate: (Int) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (!predicate(element)) return false
     return true
 }
@@ -8840,6 +8844,7 @@ public inline fun IntArray.all(predicate: (Int) -> Boolean): Boolean {
  * Returns `true` if all elements match the given [predicate].
  */
 public inline fun LongArray.all(predicate: (Long) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (!predicate(element)) return false
     return true
 }
@@ -8848,6 +8853,7 @@ public inline fun LongArray.all(predicate: (Long) -> Boolean): Boolean {
  * Returns `true` if all elements match the given [predicate].
  */
 public inline fun FloatArray.all(predicate: (Float) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (!predicate(element)) return false
     return true
 }
@@ -8856,6 +8862,7 @@ public inline fun FloatArray.all(predicate: (Float) -> Boolean): Boolean {
  * Returns `true` if all elements match the given [predicate].
  */
 public inline fun DoubleArray.all(predicate: (Double) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (!predicate(element)) return false
     return true
 }
@@ -8864,6 +8871,7 @@ public inline fun DoubleArray.all(predicate: (Double) -> Boolean): Boolean {
  * Returns `true` if all elements match the given [predicate].
  */
 public inline fun BooleanArray.all(predicate: (Boolean) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (!predicate(element)) return false
     return true
 }
@@ -8872,6 +8880,7 @@ public inline fun BooleanArray.all(predicate: (Boolean) -> Boolean): Boolean {
  * Returns `true` if all elements match the given [predicate].
  */
 public inline fun CharArray.all(predicate: (Char) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (!predicate(element)) return false
     return true
 }
@@ -8880,78 +8889,70 @@ public inline fun CharArray.all(predicate: (Char) -> Boolean): Boolean {
  * Returns `true` if array has at least one element.
  */
 public fun <T> Array<out T>.any(): Boolean {
-    for (element in this) return true
-    return false
+    return !isEmpty()
 }
 
 /**
  * Returns `true` if array has at least one element.
  */
 public fun ByteArray.any(): Boolean {
-    for (element in this) return true
-    return false
+    return !isEmpty()
 }
 
 /**
  * Returns `true` if array has at least one element.
  */
 public fun ShortArray.any(): Boolean {
-    for (element in this) return true
-    return false
+    return !isEmpty()
 }
 
 /**
  * Returns `true` if array has at least one element.
  */
 public fun IntArray.any(): Boolean {
-    for (element in this) return true
-    return false
+    return !isEmpty()
 }
 
 /**
  * Returns `true` if array has at least one element.
  */
 public fun LongArray.any(): Boolean {
-    for (element in this) return true
-    return false
+    return !isEmpty()
 }
 
 /**
  * Returns `true` if array has at least one element.
  */
 public fun FloatArray.any(): Boolean {
-    for (element in this) return true
-    return false
+    return !isEmpty()
 }
 
 /**
  * Returns `true` if array has at least one element.
  */
 public fun DoubleArray.any(): Boolean {
-    for (element in this) return true
-    return false
+    return !isEmpty()
 }
 
 /**
  * Returns `true` if array has at least one element.
  */
 public fun BooleanArray.any(): Boolean {
-    for (element in this) return true
-    return false
+    return !isEmpty()
 }
 
 /**
  * Returns `true` if array has at least one element.
  */
 public fun CharArray.any(): Boolean {
-    for (element in this) return true
-    return false
+    return !isEmpty()
 }
 
 /**
  * Returns `true` if at least one element matches the given [predicate].
  */
 public inline fun <T> Array<out T>.any(predicate: (T) -> Boolean): Boolean {
+    if (isEmpty()) return false
     for (element in this) if (predicate(element)) return true
     return false
 }
@@ -8960,6 +8961,7 @@ public inline fun <T> Array<out T>.any(predicate: (T) -> Boolean): Boolean {
  * Returns `true` if at least one element matches the given [predicate].
  */
 public inline fun ByteArray.any(predicate: (Byte) -> Boolean): Boolean {
+    if (isEmpty()) return false
     for (element in this) if (predicate(element)) return true
     return false
 }
@@ -8968,6 +8970,7 @@ public inline fun ByteArray.any(predicate: (Byte) -> Boolean): Boolean {
  * Returns `true` if at least one element matches the given [predicate].
  */
 public inline fun ShortArray.any(predicate: (Short) -> Boolean): Boolean {
+    if (isEmpty()) return false
     for (element in this) if (predicate(element)) return true
     return false
 }
@@ -8976,6 +8979,7 @@ public inline fun ShortArray.any(predicate: (Short) -> Boolean): Boolean {
  * Returns `true` if at least one element matches the given [predicate].
  */
 public inline fun IntArray.any(predicate: (Int) -> Boolean): Boolean {
+    if (isEmpty()) return false
     for (element in this) if (predicate(element)) return true
     return false
 }
@@ -8984,6 +8988,7 @@ public inline fun IntArray.any(predicate: (Int) -> Boolean): Boolean {
  * Returns `true` if at least one element matches the given [predicate].
  */
 public inline fun LongArray.any(predicate: (Long) -> Boolean): Boolean {
+    if (isEmpty()) return false
     for (element in this) if (predicate(element)) return true
     return false
 }
@@ -8992,6 +8997,7 @@ public inline fun LongArray.any(predicate: (Long) -> Boolean): Boolean {
  * Returns `true` if at least one element matches the given [predicate].
  */
 public inline fun FloatArray.any(predicate: (Float) -> Boolean): Boolean {
+    if (isEmpty()) return false
     for (element in this) if (predicate(element)) return true
     return false
 }
@@ -9000,6 +9006,7 @@ public inline fun FloatArray.any(predicate: (Float) -> Boolean): Boolean {
  * Returns `true` if at least one element matches the given [predicate].
  */
 public inline fun DoubleArray.any(predicate: (Double) -> Boolean): Boolean {
+    if (isEmpty()) return false
     for (element in this) if (predicate(element)) return true
     return false
 }
@@ -9008,6 +9015,7 @@ public inline fun DoubleArray.any(predicate: (Double) -> Boolean): Boolean {
  * Returns `true` if at least one element matches the given [predicate].
  */
 public inline fun BooleanArray.any(predicate: (Boolean) -> Boolean): Boolean {
+    if (isEmpty()) return false
     for (element in this) if (predicate(element)) return true
     return false
 }
@@ -9016,6 +9024,7 @@ public inline fun BooleanArray.any(predicate: (Boolean) -> Boolean): Boolean {
  * Returns `true` if at least one element matches the given [predicate].
  */
 public inline fun CharArray.any(predicate: (Char) -> Boolean): Boolean {
+    if (isEmpty()) return false
     for (element in this) if (predicate(element)) return true
     return false
 }
@@ -10634,78 +10643,70 @@ public fun CharArray.minWith(comparator: Comparator<in Char>): Char? {
  * Returns `true` if the array has no elements.
  */
 public fun <T> Array<out T>.none(): Boolean {
-    for (element in this) return false
-    return true
+    return isEmpty()
 }
 
 /**
  * Returns `true` if the array has no elements.
  */
 public fun ByteArray.none(): Boolean {
-    for (element in this) return false
-    return true
+    return isEmpty()
 }
 
 /**
  * Returns `true` if the array has no elements.
  */
 public fun ShortArray.none(): Boolean {
-    for (element in this) return false
-    return true
+    return isEmpty()
 }
 
 /**
  * Returns `true` if the array has no elements.
  */
 public fun IntArray.none(): Boolean {
-    for (element in this) return false
-    return true
+    return isEmpty()
 }
 
 /**
  * Returns `true` if the array has no elements.
  */
 public fun LongArray.none(): Boolean {
-    for (element in this) return false
-    return true
+    return isEmpty()
 }
 
 /**
  * Returns `true` if the array has no elements.
  */
 public fun FloatArray.none(): Boolean {
-    for (element in this) return false
-    return true
+    return isEmpty()
 }
 
 /**
  * Returns `true` if the array has no elements.
  */
 public fun DoubleArray.none(): Boolean {
-    for (element in this) return false
-    return true
+    return isEmpty()
 }
 
 /**
  * Returns `true` if the array has no elements.
  */
 public fun BooleanArray.none(): Boolean {
-    for (element in this) return false
-    return true
+    return isEmpty()
 }
 
 /**
  * Returns `true` if the array has no elements.
  */
 public fun CharArray.none(): Boolean {
-    for (element in this) return false
-    return true
+    return isEmpty()
 }
 
 /**
  * Returns `true` if no elements match the given [predicate].
  */
 public inline fun <T> Array<out T>.none(predicate: (T) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (predicate(element)) return false
     return true
 }
@@ -10714,6 +10715,7 @@ public inline fun <T> Array<out T>.none(predicate: (T) -> Boolean): Boolean {
  * Returns `true` if no elements match the given [predicate].
  */
 public inline fun ByteArray.none(predicate: (Byte) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (predicate(element)) return false
     return true
 }
@@ -10722,6 +10724,7 @@ public inline fun ByteArray.none(predicate: (Byte) -> Boolean): Boolean {
  * Returns `true` if no elements match the given [predicate].
  */
 public inline fun ShortArray.none(predicate: (Short) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (predicate(element)) return false
     return true
 }
@@ -10730,6 +10733,7 @@ public inline fun ShortArray.none(predicate: (Short) -> Boolean): Boolean {
  * Returns `true` if no elements match the given [predicate].
  */
 public inline fun IntArray.none(predicate: (Int) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (predicate(element)) return false
     return true
 }
@@ -10738,6 +10742,7 @@ public inline fun IntArray.none(predicate: (Int) -> Boolean): Boolean {
  * Returns `true` if no elements match the given [predicate].
  */
 public inline fun LongArray.none(predicate: (Long) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (predicate(element)) return false
     return true
 }
@@ -10746,6 +10751,7 @@ public inline fun LongArray.none(predicate: (Long) -> Boolean): Boolean {
  * Returns `true` if no elements match the given [predicate].
  */
 public inline fun FloatArray.none(predicate: (Float) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (predicate(element)) return false
     return true
 }
@@ -10754,6 +10760,7 @@ public inline fun FloatArray.none(predicate: (Float) -> Boolean): Boolean {
  * Returns `true` if no elements match the given [predicate].
  */
 public inline fun DoubleArray.none(predicate: (Double) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (predicate(element)) return false
     return true
 }
@@ -10762,6 +10769,7 @@ public inline fun DoubleArray.none(predicate: (Double) -> Boolean): Boolean {
  * Returns `true` if no elements match the given [predicate].
  */
 public inline fun BooleanArray.none(predicate: (Boolean) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (predicate(element)) return false
     return true
 }
@@ -10770,6 +10778,7 @@ public inline fun BooleanArray.none(predicate: (Boolean) -> Boolean): Boolean {
  * Returns `true` if no elements match the given [predicate].
  */
 public inline fun CharArray.none(predicate: (Char) -> Boolean): Boolean {
+    if (isEmpty()) return true
     for (element in this) if (predicate(element)) return false
     return true
 }
